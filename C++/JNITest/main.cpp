@@ -50,7 +50,7 @@ int main(int argc, char* argv[])
     jclass mechIOClass = env->FindClass("com/mycompany/mechiotest/main");
     if (mechIOClass != NULL)
     {
-        jstring robotIP = env->NewStringUTF("192.168.48.1");
+        jstring robotIP = env->NewStringUTF("192.168.92.1");
         jmethodID mechIOConstructor = env->GetMethodID(mechIOClass, "<init>", "(Ljava/lang/String;)V");
         jmethodID mechIOConnectRobot = env->GetMethodID(mechIOClass, "connectRobot", "()V");
         jmethodID mechIOTestRun = env->GetMethodID(mechIOClass, "test", "()V");

@@ -41,8 +41,8 @@
 			<Add directory="$JAVA_HOME/include/linux" />
 		</Compiler>
 		<Linker>
-			<Add library="$JAVA_HOME/jre/lib/i386/client/libjvm.so" />
-			<Add directory="$JAVA_HOME/jre/lib/i386/server" />
+			<Add library="/usr/lib/jvm/java-1.7.0/jre/lib/i386/client/libjvm.so" />
+			<Add directory="/usr/lib/jvm/java-1.7.0/jre/lib/i386/client" />
 			<Add directory="$JAVA_HOME/jre/lib/i386/" />
 		</Linker>
 		<Unit filename="main.cpp" />
