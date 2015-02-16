@@ -28,7 +28,7 @@ JNIEnv* create_vm(JavaVM ** jvm, string path) {
 
 int main(int argc, char* argv[])
 {
-	string pathToJavaClass = "../../Java/mechioTest/target/classes;../../Java/mechioTest/dependencies";
+	string pathToJavaClass = "../../Java/mechioTest/target/classes:../../Java/mechioTest/dependencies";
 	JNIEnv *env;
 	JavaVM * jvm;
 	env = create_vm(&jvm, pathToJavaClass);
@@ -37,7 +37,7 @@ int main(int argc, char* argv[])
 
     cout << "Hello world!" << endl;
 
-    jclass mechIOClass = env->FindClass("com/mycompany/mechiotest/main");
+
     /*jclass testClass = env->FindClass("Test");
     if (testClass) {
         jmethodID testMethod = env->GetStaticMethodID(testClass, "test", "()V");
@@ -45,10 +45,12 @@ int main(int argc, char* argv[])
     } else {
         printf("Class not Found");
     }
+    return 0;
     */
+    jclass mechIOClass = env->FindClass("com/mycompany/mechiotest/main");
     if (mechIOClass != NULL)
     {
-        jstring robotIP = env->NewStringUTF("127.0.0.1");
+        jstring robotIP = env->NewStringUTF("192.168.48.1");
         jmethodID mechIOConstructor = env->GetMethodID(mechIOClass, "<init>", "(Ljava/lang/String;)V");
         jmethodID mechIOConnectRobot = env->GetMethodID(mechIOClass, "connectRobot", "()V");
         jmethodID mechIOTestRun = env->GetMethodID(mechIOClass, "test", "()V");
