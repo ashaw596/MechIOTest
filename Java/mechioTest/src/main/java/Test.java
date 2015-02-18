@@ -18,6 +18,7 @@ public class Test {
         System.out.println("TEST");
     }
     public static void test1() {
+    /*
         
         System.out.println("test1");
         String robotIP = "127.0.0.1";
@@ -45,6 +46,7 @@ public class Test {
             robot.move(goalPositions2, 1000);
             MechIO.sleep(1000);
         }
+       */
         
     }
     public static void main(String args[]) {

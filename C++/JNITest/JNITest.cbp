@@ -12,8 +12,8 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
-					<Add option="-std=c++11" />
 					<Add option="-g" />
+					<Add option="-D_GLIBCXX_USE_NANOSLEEP" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -33,15 +33,17 @@
 			</Target>
 		</Build>
 		<Compiler>
+			<Add option="-std=c++0x" />
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 			<Add option="-ljvm" />
-			<Add directory="C:/Program Files (x86)/Java/jdk1.7.0_75/include" />
-			<Add directory="C:/Program Files (x86)/Java/jdk1.7.0_75/include/win32" />
+			<Add directory="$JAVA_HOME/include" />
+			<Add directory="$JAVA_HOME/include/linux" />
 		</Compiler>
 		<Linker>
-			<Add library="C:\Program Files (x86)\Java\jdk1.7.0_75\lib\jvm.lib" />
-			<Add directory="C:/Program Files (x86)/Java/jdk1.7.0_75/jre/bin/client" />
+			<Add library="/usr/lib/jvm/java-1.7.0/jre/lib/i386/client/libjvm.so" />
+			<Add directory="/usr/lib/jvm/java-1.7.0/jre/lib/i386/client" />
+			<Add directory="$JAVA_HOME/jre/lib/i386/" />
 		</Linker>
 		<Unit filename="main.cpp" />
 		<Extensions>
