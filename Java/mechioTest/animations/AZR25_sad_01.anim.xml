@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<Animation>
+	<Version type="Animation">
+		<Name>AZR25_sad_01.anim.xml</Name>
+		<Number>1.0</Number>
+	</Version>
+	<Channels>
+		<Channel id="200" name="Head_Yaw">
+			<MotionPaths>
+				<MotionPath name="path">
+					<Version type="Interpolation">
+						<Name>Linear Interpolation</Name>
+						<Number>1.0</Number>
+					</Version>
+					<ControlPoints>
+						<ControlPoint><Time>41.6667</Time><Position>0.5</Position></ControlPoint>
+						<ControlPoint><Time>500.0</Time><Position>0.5007861315174575</Position></ControlPoint>
+						<ControlPoint><Time>3000.0</Time><Position>0.5</Position></ControlPoint>
+					</ControlPoints>
+				</MotionPath>
+			</MotionPaths>
+		</Channel>
+		<Channel id="202" name="Head_Pitch">
+			<MotionPaths>
+				<MotionPath name="path">
+					<Version type="Interpolation">
+						<Name>Linear Interpolation</Name>
+						<Number>1.0</Number>
+					</Version>
+					<ControlPoints>
+						<ControlPoint><Time>41.6667</Time><Position>0.5</Position></ControlPoint>
+						<ControlPoint><Time>660.0</Time><Position>0.0</Position></ControlPoint>
+						<ControlPoint><Time>1564.0</Time><Position>0.0</Position></ControlPoint>
+						<ControlPoint><Time>2494.0</Time><Position>0.0</Position></ControlPoint>
+						<ControlPoint><Time>3000.0</Time><Position>0.5</Position></ControlPoint>
+					</ControlPoints>
+				</MotionPath>
+			</MotionPaths>
+		</Channel>
+		<Channel id="300" name="Forehead">
+			<MotionPaths>
+				<MotionPath name="path">
+					<Version type="Interpolation">
+						<Name>Linear Interpolation</Name>
+						<Number>1.0</Number>
+					</Version>
+					<ControlPoints>
+						<ControlPoint><Time>41.6667</Time><Position>0.5454545454545459</Position></ControlPoint>
+						<ControlPoint><Time>382.0</Time><Position>0.8453038674033149</Position></ControlPoint>
+						<ControlPoint><Time>1657.0</Time><Position>0.9171270718232044</Position></ControlPoint>
+						<ControlPoint><Time>2541.0</Time><Position>0.9751381215469613</Position></ControlPoint>
+						<ControlPoint><Time>3000.0</Time><Position>0.5454545454545459</Position></ControlPoint>
+					</ControlPoints>
+				</MotionPath>
+			</MotionPaths>
+		</Channel>
+		<Channel id="320" name="LtSmile01">
+			<MotionPaths>
+				<MotionPath name="path">
+					<Version type="Interpolation">
+						<Name>Linear Interpolation</Name>
+						<Number>1.0</Number>
+					</Version>
+					<ControlPoints>
+						<ControlPoint><Time>41.6667</Time><Position>0.5</Position></ControlPoint>
+						<ControlPoint><Time>563.0</Time><Position>0.013812154696132617</Position></ControlPoint>
+						<ControlPoint><Time>1786.0</Time><Position>0.0</Position></ControlPoint>
+						<ControlPoint><Time>2531.0</Time><Position>0.0</Position></ControlPoint>
+						<ControlPoint><Time>3000.0</Time><Position>0.5</Position></ControlPoint>
+					</ControlPoints>
+				</MotionPath>
+			</MotionPaths>
+		</Channel>
+		<Channel id="301" name="Eyelids">
+			<MotionPaths>
+				<MotionPath name="path">
+					<Version type="Interpolation">
+						<Name>Linear Interpolation</Name>
+						<Number>1.0</Number>
+					</Version>
+					<ControlPoints>
+						<ControlPoint><Time>41.6667</Time><Position>0.5</Position></ControlPoint>
+						<ControlPoint><Time>166.667</Time><Position>0.4753030362127493</Position></ControlPoint>
+						<ControlPoint><Time>250.0</Time><Position>0.0</Position></ControlPoint>
+						<ControlPoint><Time>449.0</Time><Position>0.0</Position></ControlPoint>
+						<ControlPoint><Time>662.0</Time><Position>0.16034482758620694</Position></ControlPoint>
+						<ControlPoint><Time>865.0</Time><Position>0.16034482758620694</Position></ControlPoint>
+						<ControlPoint><Time>1871.0</Time><Position>0.1586206896551724</Position></ControlPoint>
+						<ControlPoint><Time>2187.0</Time><Position>0.0</Position></ControlPoint>
+						<ControlPoint><Time>2375.0</Time><Position>0.0</Position></ControlPoint>
+						<ControlPoint><Time>2500.0</Time><Position>0.36472561949927124</Position></ControlPoint>
+						<ControlPoint><Time>3000.0</Time><Position>0.5</Position></ControlPoint>
+					</ControlPoints>
+				</MotionPath>
+			</MotionPaths>
+		</Channel>
+	</Channels>
+	<AddOns />
+	<ChannelsParameters />
+	<SyncPointGroups />
+</Animation>
