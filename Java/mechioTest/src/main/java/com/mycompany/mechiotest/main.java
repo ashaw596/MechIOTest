@@ -40,11 +40,12 @@ public class main {
     }
     
     public void loadAnims() {
-        happyAnim = MechIO.loadAnimation("animations/AZR25_happy_01.anim.xml"); 
-        sadAnim = MechIO.loadAnimation("animations/AZR25_sad_01.anim.xml");
-        surpriseAnim = MechIO.loadAnimation("animations/AZR25_surprise_01.anim.xml");
-        angryAnim = MechIO.loadAnimation("animations/AZR25_angry_01.anim.xml");
-        panicAnim = MechIO.loadAnimation("animations/AZR25_panic_01.anim.xml");
+        String prefix="../../Java/mechioTest/";
+        happyAnim = MechIO.loadAnimation(prefix + "animations/AZR25_happy_01.anim.xml"); 
+        sadAnim = MechIO.loadAnimation(prefix + "animations/AZR25_sad_01.anim.xml");
+        surpriseAnim = MechIO.loadAnimation(prefix + "animations/AZR25_surprise_01.anim.xml");
+        angryAnim = MechIO.loadAnimation(prefix + "animations/AZR25_angry_01.anim.xml");
+        panicAnim = MechIO.loadAnimation(prefix + "animations/AZR25_panic_01.anim.xml");
     }
     
     public void moveNeckYaw(double goalPosition, int time) {
@@ -78,7 +79,12 @@ public class main {
         }
     }
     
+    public int playAnimTime(String name) {
+        return playAnim(name).getAnimationLength().intValue();
+    }
     public AnimationJob playAnim(String name) {
+        System.out.println("playAnim");
+        System.out.println(name);
         switch (name) {
             case "happy":
                 return playHappyAnim();

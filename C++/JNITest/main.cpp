@@ -28,7 +28,7 @@ JNIEnv* create_vm(JavaVM ** jvm, string path) {
 
 int main(int argc, char* argv[])
 {
-	string pathToJavaClass = "../../Java/mechioTest/target/classes:../../Java/mechioTest/dependencies";
+	string pathToJavaClass = "../../Java/mechioTest/target/classes;../../Java/mechioTest/dependencies";
 	JNIEnv *env;
 	JavaVM * jvm;
 	env = create_vm(&jvm, pathToJavaClass);
@@ -56,7 +56,8 @@ int main(int argc, char* argv[])
         jmethodID mechIOTestRun = env->GetMethodID(mechIOClass, "test", "()V");
         jmethodID mechIOMoveNeckYaw = env->GetMethodID(mechIOClass, "moveNeckYaw", "(DI)V");
         jmethodID mechIOsleep = env->GetMethodID(mechIOClass, "sleep", "(J)V");
-        jmethodID mechIOplayAnim = env->GetMethodID(mechIOClass, "playAnim", "(Ljava/lang/String;)V");
+        jmethodID mechIOplayAnim = env->GetMethodID(mechIOClass, "playAnim", "(Ljava/lang/String;)Lorg/mechio/api/animation/player/AnimationJob;");
+        jmethodID mechIOplayAnimTime = env->GetMethodID(mechIOClass, "playAnimTime", "(Ljava/lang/String;)I");
         //construct new Remote Robot and connect it
         jobject mechIO = env->NewObject(mechIOClass, mechIOConstructor, robotIP);
         env->CallVoidMethod(mechIO, mechIOConnectRobot);
@@ -68,10 +69,28 @@ int main(int argc, char* argv[])
 
         //Move Neck
         while(mechIOMoveNeckYaw) {
-            env->CallObjectMethod(mechIO, mechIOplayAnim, "happy");
-            std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-            /*
-            printf("moveHead\n");
+            printf("test");
+            if (mechIOplayAnimTime) {
+                printf("happy\n");
+                int time = env->CallIntMethod(mechIO, mechIOplayAnimTime, env->NewStringUTF("happy"));
+                std::this_thread::sleep_for(std::chrono::milliseconds(500 + time));
+                printf("sad\n");
+                time = env->CallIntMethod(mechIO, mechIOplayAnimTime, env->NewStringUTF("sad"));
+                std::this_thread::sleep_for(std::chrono::milliseconds(500 + time));
+                printf("angry\n");
+                time = env->CallIntMethod(mechIO, mechIOplayAnimTime, env->NewStringUTF("angry"));
+                std::this_thread::sleep_for(std::chrono::milliseconds(500 + time));
+                printf("panic\n");
+                time = env->CallIntMethod(mechIO, mechIOplayAnimTime, env->NewStringUTF("panic"));
+                std::this_thread::sleep_for(std::chrono::milliseconds(500 + time));
+                printf("surprise\n");
+                time = env->CallIntMethod(mechIO, mechIOplayAnimTime, env->NewStringUTF("surprise"));
+                std::this_thread::sleep_for(std::chrono::milliseconds(500 + time));
+                printf("Lets do it again\n");
+            }
+
+
+            /*printf("moveHead\n");
             env->CallVoidMethod(mechIO, mechIOMoveNeckYaw, 0.2, (int)1000);
             std::this_thread::sleep_for(std::chrono::milliseconds(1000));
             env->CallVoidMethod(mechIO, mechIOMoveNeckYaw, 0.8, 1000);
