@@ -56,6 +56,7 @@ int main(int argc, char* argv[])
         jmethodID mechIOTestRun = env->GetMethodID(mechIOClass, "test", "()V");
         jmethodID mechIOMoveNeckYaw = env->GetMethodID(mechIOClass, "moveNeckYaw", "(DI)V");
         jmethodID mechIOsleep = env->GetMethodID(mechIOClass, "sleep", "(J)V");
+        jmethodID mechIOplayAnim = env->GetMethodID(mechIOClass, "playAnim", "(Ljava/lang/String;)V");
         //construct new Remote Robot and connect it
         jobject mechIO = env->NewObject(mechIOClass, mechIOConstructor, robotIP);
         env->CallVoidMethod(mechIO, mechIOConnectRobot);
@@ -67,11 +68,16 @@ int main(int argc, char* argv[])
 
         //Move Neck
         while(mechIOMoveNeckYaw) {
+            env->CallObjectMethod(mechIO, mechIOplayAnim, "happy");
+            std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+            /*
             printf("moveHead\n");
             env->CallVoidMethod(mechIO, mechIOMoveNeckYaw, 0.2, (int)1000);
             std::this_thread::sleep_for(std::chrono::milliseconds(1000));
             env->CallVoidMethod(mechIO, mechIOMoveNeckYaw, 0.8, 1000);
             std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+            */
+
         }
     }
 	else

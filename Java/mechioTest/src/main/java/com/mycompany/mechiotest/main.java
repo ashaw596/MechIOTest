@@ -78,6 +78,24 @@ public class main {
         }
     }
     
+    public AnimationJob playAnim(String name) {
+        switch (name) {
+            case "happy":
+                return playHappyAnim();
+            case "sad":
+                return playSadAnim();
+            case "surprise":
+                return playSurpriseAnim();
+            case "angry":
+                return playAngryAnim();
+            case "panic":
+                return playPanicAnim();
+            default:
+                break;
+        }
+        return null;
+    }
+    
     public AnimationJob playHappyAnim() {
         return playAnimation(happyAnim);
     }
