@@ -48,6 +48,48 @@ public class main {
         panicAnim = MechIO.loadAnimation(prefix + "animations/AZR25_panic_01.anim.xml");
     }
     
+    
+    public void moveFace(int time, double goalMouth, double goalSmile, double goalEyebrows, double goalEyelids, double goalEyeYaw, double goalHeadPitch, double goalHeadYaw){
+        RobotPositionMap goalPositions = new RobotPositionHashMap();
+        JointId mouth = new JointId(robot.getRobotId(), new Joint.Id(R25.Joints.MOUTH));
+        JointId smile = new JointId(robot.getRobotId(), new Joint.Id(R25.Joints.SMILE));
+        JointId eyebrows = new JointId(robot.getRobotId(), new Joint.Id(R25.Joints.EYBROWS));
+        JointId eyelids = new JointId(robot.getRobotId(), new Joint.Id(R25.Joints.EYELIDS));
+        JointId eyeYaw = new JointId(robot.getRobotId(), new Joint.Id(R25.Joints.EYE_YAW));
+        JointId headPitch = new JointId(robot.getRobotId(), new Joint.Id(R25.Joints.HEAD_PITCH));
+        JointId headYaw = new JointId(robot.getRobotId(), new Joint.Id(R25.Joints.HEAD_YAW));
+        if (NormalizedDouble.isValid(goalMouth)) {
+            goalPositions.put(mouth, new NormalizedDouble(goalMouth));
+        }
+        
+        if (NormalizedDouble.isValid(goalSmile)) {
+            goalPositions.put(smile, new NormalizedDouble(goalSmile));
+        }
+        
+        if (NormalizedDouble.isValid(goalEyebrows)) {
+            goalPositions.put(eyebrows, new NormalizedDouble(goalEyebrows));
+        }
+        
+        if (NormalizedDouble.isValid(goalEyelids)) {
+            goalPositions.put(eyelids, new NormalizedDouble(goalEyelids));
+        }
+        
+        if (NormalizedDouble.isValid(goalEyeYaw)) {
+            goalPositions.put(eyeYaw, new NormalizedDouble(goalEyeYaw));
+        }
+        if (NormalizedDouble.isValid(goalHeadPitch)) {
+            goalPositions.put(headPitch, new NormalizedDouble(goalHeadPitch));
+        }
+        
+        if (NormalizedDouble.isValid(goalHeadYaw)) {
+            goalPositions.put(headYaw, new NormalizedDouble(goalHeadYaw));
+        }
+        
+        robot.move(goalPositions, time);
+        System.out.println("position:" + goalPositions + " Time:" + time);
+
+    }
+    
     public void moveNeckYaw(double goalPosition, int time) {
         JointId neckYaw = new JointId(robot.getRobotId(), new Joint.Id(R50RobotJoints.NECK_YAW));
         RobotPositionMap goalPositions = new RobotPositionHashMap();
@@ -121,12 +163,40 @@ public class main {
     public AnimationJob playAnimation(Animation anim) {
         return animPlayer.playAnimation(anim);
     }
+    
+    public void showNeutral(int time) {
+        moveFace(time, 0.5 + 7.0/8.0/2, 0.5 + 2.0/8.0/2, 0.5, 0.5 + 4.0/8.0/2, 0.5, 0.5, -2);
+    }
+    public void showSmileSlight(int time) {
+        moveFace(time, 0.5 + 7.0/8.0/2, 0.5 + 6.0/8.0/2, 0.5, 0.5 + 2.0/8.0/2, 0.5, 0.5, -2);
+        //moveFace(double goalMouth, double goalSmile, double goalEyebrows, double goalEyelids, double goalEyeYaw, double goalHeadPitch, double goalHeadYaw){
 
+    }
+    public void showSmileFull(int time) {
+        moveFace(time, 0.5 + 3.0/8.0/2, 0.5 + 8.0/8.0/2, 0.5, 0.5 + 1.0/8.0/2, 0.5, 0.5, -2);
+        
+    }
+    public static void cycleSmile(main robot) {
+        while(true) {
+            System.out.println("Show Neutral");
+            robot.showNeutral(500);
+            MechIO.sleep(2000 + 500);
+            System.out.println("Show Slight Smile");
+            robot.showSmileSlight(500);
+            MechIO.sleep(2000 + 500);
+            System.out.println("Show Full Smile");
+            robot.showSmileFull(500);
+            MechIO.sleep(2000 + 500);
+        }
+    }
+    
     public static void main(String args[]) {
         main robot = new main("127.0.0.1");
         robot.connectRobot();
         System.out.println("connected");
+        cycleSmile(robot);
         while (true) {
+            /*
             System.out.println("Happy");
             AnimationJob job = robot.playHappyAnim();
             MechIO.sleep(500 + job.getAnimationLength());
@@ -143,6 +213,7 @@ public class main {
             System.out.println("Surprise");
             job = robot.playSurpriseAnim();
             MechIO.sleep(500 + job.getAnimationLength());
+            */
             //robot.moveNeckYaw(.2, 1000);
            // MechIO.sleep(1000);
             //ro^ot.moveNeckYaw(.8, 1000);
