@@ -47,47 +47,36 @@ int main(int argc, char* argv[])
     }
     return 0;
     */
-    jclass mechIOClass = env->FindClass("com/mycompany/mechiotest/main");
+    jclass mechIOClass = env->FindClass("com/mycompany/mechiotest/Zeno");
     if (mechIOClass != NULL)
     {
-        jstring robotIP = env->NewStringUTF("192.168.92.1");
-        jmethodID mechIOConstructor = env->GetMethodID(mechIOClass, "<init>", "(Ljava/lang/String;)V");
-        jmethodID mechIOConnectRobot = env->GetMethodID(mechIOClass, "connectRobot", "()V");
-        jmethodID mechIOTestRun = env->GetMethodID(mechIOClass, "test", "()V");
-        jmethodID mechIOMoveNeckYaw = env->GetMethodID(mechIOClass, "moveNeckYaw", "(DI)V");
-        jmethodID mechIOsleep = env->GetMethodID(mechIOClass, "sleep", "(J)V");
-        jmethodID mechIOplayAnim = env->GetMethodID(mechIOClass, "playAnim", "(Ljava/lang/String;)Lorg/mechio/api/animation/player/AnimationJob;");
-        jmethodID mechIOplayAnimTime = env->GetMethodID(mechIOClass, "playAnimTime", "(Ljava/lang/String;)I");
+        jstring robotIP = env->NewStringUTF("192.168.187.1");
+        jmethodID zenoConstructor = env->GetMethodID(mechIOClass, "<init>", "(Ljava/lang/String;)V");
+        jmethodID zenoConnectRobot = env->GetMethodID(mechIOClass, "connectRobot", "()V");
+        //jmethodID mechIOTestRun = env->GetMethodID(mechIOClass, "test", "()V");
+        //jmethodID mechIOMoveNeckYaw = env->GetMethodID(mechIOClass, "moveNeckYaw", "(DI)V");
+        jmethodID zenoShowEmotion = env->GetMethodID(mechIOClass, "showEmotion", "(Ljava/lang/String;I)V");
+        //jmethodID mechIOsleep = env->GetMethodID(mechIOClass, "sleep", "(J)V");
+        //jmethodID mechIOplayAnim = env->GetMethodID(mechIOClass, "playAnim", "(Ljava/lang/String;)Lorg/mechio/api/animation/player/AnimationJob;");
+        //jmethodID mechIOplayAnimTime = env->GetMethodID(mechIOClass, "playAnimTime", "(Ljava/lang/String;)I");
         //construct new Remote Robot and connect it
-        jobject mechIO = env->NewObject(mechIOClass, mechIOConstructor, robotIP);
-        env->CallVoidMethod(mechIO, mechIOConnectRobot);
-
-        if(mechIOTestRun) {
-            printf("found Test Method\n");
-            //env->CallVoidMethod(mechIO, mechIOTestRun);
-        }
+        jobject zeno = env->NewObject(mechIOClass, zenoConstructor, robotIP);
+        env->CallVoidMethod(zeno, zenoConnectRobot);
 
         //Move Neck
-        while(mechIOMoveNeckYaw) {
-            printf("test");
-            if (mechIOplayAnimTime) {
-                printf("happy\n");
-                int time = env->CallIntMethod(mechIO, mechIOplayAnimTime, env->NewStringUTF("happy"));
-                std::this_thread::sleep_for(std::chrono::milliseconds(500 + time));
-                printf("sad\n");
-                time = env->CallIntMethod(mechIO, mechIOplayAnimTime, env->NewStringUTF("sad"));
-                std::this_thread::sleep_for(std::chrono::milliseconds(500 + time));
-                printf("angry\n");
-                time = env->CallIntMethod(mechIO, mechIOplayAnimTime, env->NewStringUTF("angry"));
-                std::this_thread::sleep_for(std::chrono::milliseconds(500 + time));
-                printf("panic\n");
-                time = env->CallIntMethod(mechIO, mechIOplayAnimTime, env->NewStringUTF("panic"));
-                std::this_thread::sleep_for(std::chrono::milliseconds(500 + time));
-                printf("surprise\n");
-                time = env->CallIntMethod(mechIO, mechIOplayAnimTime, env->NewStringUTF("surprise"));
-                std::this_thread::sleep_for(std::chrono::milliseconds(500 + time));
-                printf("Lets do it again\n");
-            }
+        while(zenoShowEmotion) {
+            printf("Neutral\n");
+            env->CallVoidMethod(zeno, zenoShowEmotion, env->NewStringUTF("Neutral"), 500);
+            std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+            printf("SlightSmile\n");
+            env->CallVoidMethod(zeno, zenoShowEmotion, env->NewStringUTF("SmileSlight"), 500);
+            std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+            printf("Smile\n");
+            env->CallVoidMethod(zeno, zenoShowEmotion, env->NewStringUTF("SmileFull"), 500);
+            std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+
+            printf("Lets do it again\n");
+        }
 
 
             /*printf("moveHead\n");
@@ -97,7 +86,7 @@ int main(int argc, char* argv[])
             std::this_thread::sleep_for(std::chrono::milliseconds(1000));
             */
 
-        }
+
     }
 	else
     {

@@ -176,6 +176,22 @@ public class Zeno {
         moveFace(time, 0.5 + 3.0/8.0/2, 0.5 + 8.0/8.0/2, 0.5, 0.5 + 1.0/8.0/2, 0.5, 0.5, -2);
         
     }
+    
+    public void showEmotion(String emotion, int time) {
+        switch (emotion) {
+            case "Neutral":
+                showNeutral(time);
+                break;
+            case "SmileSlight":
+                showSmileSlight(time);
+                break;
+            case "SmileFull":
+                showSmileFull(time);
+                break;
+            default:
+                break;                
+        }
+    }
     public static void cycleSmile(Zeno robot) {
         while(true) {
             System.out.println("Show Neutral");
