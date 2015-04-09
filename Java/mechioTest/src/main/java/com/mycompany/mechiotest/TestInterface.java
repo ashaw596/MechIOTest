@@ -14,14 +14,14 @@ import javax.swing.Action;
  * @author Albert
  */
 public class TestInterface extends javax.swing.JFrame {
-    private main robot;
+    private Zeno robot;
     /**
      * Creates new form TestInterface
      */
     public TestInterface() {
         
         
-        robot = new main("127.0.0.1");
+        robot = new Zeno("127.0.0.1");
         robot.connectRobot();
         initComponents();
         ActionListener neutralListener = new ActionListener() {

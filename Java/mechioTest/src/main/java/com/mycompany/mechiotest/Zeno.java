@@ -19,7 +19,7 @@ import org.mechio.client.basic.*;
  *
  * @author Albert
  */
-public class main {
+public class Zeno {
     
     private RemoteRobot robot;
     private RemoteAnimationPlayerClient animPlayer;
@@ -28,7 +28,7 @@ public class main {
     private Animation panicAnim;
     private Animation surpriseAnim;
     private Animation angryAnim;
-    public main (String robotIP) {
+    public Zeno (String robotIP) {
         System.out.println("Constructor("+robotIP+")");
         UserSettings.setRobotAddress(robotIP);
     }
@@ -176,7 +176,7 @@ public class main {
         moveFace(time, 0.5 + 3.0/8.0/2, 0.5 + 8.0/8.0/2, 0.5, 0.5 + 1.0/8.0/2, 0.5, 0.5, -2);
         
     }
-    public static void cycleSmile(main robot) {
+    public static void cycleSmile(Zeno robot) {
         while(true) {
             System.out.println("Show Neutral");
             robot.showNeutral(500);
@@ -191,7 +191,7 @@ public class main {
     }
     
     public static void main(String args[]) {
-        main robot = new main("127.0.0.1");
+        Zeno robot = new Zeno("127.0.0.1");
         robot.connectRobot();
         System.out.println("connected");
         cycleSmile(robot);
