@@ -194,7 +194,7 @@ public class Zeno {
         //moveFace(double goalMouth, double goalSmile, double goalEyebrows, double goalEyelids, double goalEyeYaw, double goalHeadPitch, double goalHeadYaw){
     }
     
-    public void showAlmostFull(int time) {
+    public void showSmileAlmostFull(int time) {
         if (isReal) {
             
         } else {
@@ -211,7 +211,7 @@ public class Zeno {
         
     }
     
-    public void showEmotion(String emotion, int time) {
+    public boolean showEmotion(String emotion, int time) {
         switch (emotion) {
             case "Neutral":
                 showNeutral(time);
@@ -226,16 +226,16 @@ public class Zeno {
                 break;
             
             case "SmileAlmostFull":
-                showAlmostFull(time);
+                showSmileAlmostFull(time);
                 break;
                
             case "SmileFull":
                 showSmileFull(time);
                 break;
             default:
-                throw new RuntimeException("Expression not Found");
-                              
+                return false;
         }
+        return true;
     }
     public static void cycleSmile(Zeno robot) {
         while(true) {
@@ -256,7 +256,7 @@ public class Zeno {
             MechIO.sleep(2000 + 500);
             
             System.out.println("Show Full Smile");
-            robot.showSmileFull(500);
+            robot.showEmotion("SmileFull", 500);
             MechIO.sleep(2000 + 500);
         }
     }
