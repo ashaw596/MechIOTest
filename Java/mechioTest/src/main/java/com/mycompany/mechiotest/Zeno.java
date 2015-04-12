@@ -28,9 +28,11 @@ public class Zeno {
     private Animation panicAnim;
     private Animation surpriseAnim;
     private Animation angryAnim;
-    public Zeno (String robotIP) {
+    private boolean isReal;
+    public Zeno (String robotIP, boolean isReal) {
         System.out.println("Constructor("+robotIP+")");
         UserSettings.setRobotAddress(robotIP);
+        this.isReal = isReal;
     }
     public boolean connectRobot() {
         System.out.println("Connect Robot");
@@ -169,15 +171,43 @@ public class Zeno {
     }
     
     public void showNeutral(int time) {
-        moveFace(time, 0.5 + 7.0/8.0/2, 0.5 + 2.0/8.0/2, 0.5, 0.5 + 4.0/8.0/2, 0.5, 0.5, -2);
+        if (isReal) {
+            
+        } else {
+            moveFace(time, 0.5 + 7.0/8.0/2, 0.5 + 2.0/8.0/2, 0.5, 0.5 + 4.0/8.0/2, 0.5, 0.5, -2);
+        }
+    }
+    
+    public void showVerySlightSmile(int time) {
+        if (isReal) {
+            
+        } else {
+            moveFace(time, 0.5 + 7.0/8.0/2, 0.5 + 4.0/8.0/2, 0.5, 0.5 + 4.0/8.0/2, 0.5, 0.5, -2);
+        }
     }
     public void showSmileSlight(int time) {
-        moveFace(time, 0.5 + 7.0/8.0/2, 0.5 + 6.0/8.0/2, 0.5, 0.5 + 2.0/8.0/2, 0.5, 0.5, -2);
+        if (isReal) {
+            
+        } else {
+            moveFace(time, 0.5 + 7.0/8.0/2, 0.5 + 6.0/8.0/2, 0.5, 0.5 + 2.0/8.0/2, 0.5, 0.5, -2);
+        }
         //moveFace(double goalMouth, double goalSmile, double goalEyebrows, double goalEyelids, double goalEyeYaw, double goalHeadPitch, double goalHeadYaw){
-
     }
+    
+    public void showAlmostFull(int time) {
+        if (isReal) {
+            
+        } else {
+            moveFace(time, 0.5 + 4.0/8.0/2, 0.5 + 6.5/8.0/2, 0.5, 0.5 + 2.0/8.0/2, 0.5, 0.5, -2);
+        }
+    }
+    
     public void showSmileFull(int time) {
-        moveFace(time, 0.5 + 3.0/8.0/2, 0.5 + 8.0/8.0/2, 0.5, 0.5 + 1.0/8.0/2, 0.5, 0.5, -2);
+        if (isReal) {
+            
+        } else {
+            moveFace(time, 0.5 + 3.0/8.0/2, 0.5 + 8.0/8.0/2, 0.5, 0.5 + 1.0/8.0/2, 0.5, 0.5, -2);
+        }
         
     }
     
@@ -186,24 +216,45 @@ public class Zeno {
             case "Neutral":
                 showNeutral(time);
                 break;
+            
+            case "SmileVerySlight":
+                showVerySlightSmile(time);
+                break;
+            
             case "SmileSlight":
                 showSmileSlight(time);
                 break;
+            
+            case "SmileAlmostFull":
+                showAlmostFull(time);
+                break;
+               
             case "SmileFull":
                 showSmileFull(time);
                 break;
             default:
+                throw new RuntimeException("Expression not Found");
                 break;                
         }
     }
     public static void cycleSmile(Zeno robot) {
         while(true) {
             System.out.println("Show Neutral");
-            robot.showNeutral(500);
+            robot.showEmotion("Neutral", 500);
             MechIO.sleep(2000 + 500);
+            
+            System.out.println("Show Very Slight Smile");
+            robot.showEmotion("SmileVerySlight", 500);
+            MechIO.sleep(2000 + 500);
+            
             System.out.println("Show Slight Smile");
-            robot.showSmileSlight(500);
+            robot.showEmotion("SmileSlight", 500);
             MechIO.sleep(2000 + 500);
+            
+            System.out.println("Show Smile Almost Full");
+            robot.showEmotion("SmileAlmostFull", 500);
+            MechIO.sleep(2000 + 500);
+            
             System.out.println("Show Full Smile");
             robot.showSmileFull(500);
             MechIO.sleep(2000 + 500);
@@ -211,7 +262,7 @@ public class Zeno {
     }
     
     public static void main(String args[]) {
-        Zeno robot = new Zeno("127.0.0.1");
+        Zeno robot = new Zeno("127.0.0.1", false);
         robot.connectRobot();
         System.out.println("connected");
         cycleSmile(robot);
