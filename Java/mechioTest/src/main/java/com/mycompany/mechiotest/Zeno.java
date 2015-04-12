@@ -32,11 +32,15 @@ public class Zeno {
         System.out.println("Constructor("+robotIP+")");
         UserSettings.setRobotAddress(robotIP);
     }
-    public void connectRobot() {
+    public boolean connectRobot() {
         System.out.println("Connect Robot");
         robot = MechIO.connectRobot();
-        animPlayer = MechIO.connectAnimationPlayer();
-        loadAnims();
+        if (robot == null) {
+            return false;
+        }
+        return true;
+        //animPlayer = MechIO.connectAnimationPlayer();
+        //loadAnims();
     }
     
     public void loadAnims() {
