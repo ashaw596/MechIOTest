@@ -28,7 +28,7 @@ JNIEnv* create_vm(JavaVM ** jvm, string path) {
 
 int main(int argc, char* argv[])
 {
-	string pathToJavaClass = "../../Java/mechioTest/target/classes;../../Java/mechioTest/dependencies";
+	string pathToJavaClass = "../../Java/mechioTest/target/classes:../../Java/mechioTest/dependencies";
 	JNIEnv *env;
 	JavaVM * jvm;
 	env = create_vm(&jvm, pathToJavaClass);
