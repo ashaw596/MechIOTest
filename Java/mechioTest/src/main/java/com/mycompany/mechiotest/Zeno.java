@@ -172,7 +172,9 @@ public class Zeno {
     
     public void showNeutral(int time) {
         if (isReal) {
-            
+            moveFace(time, 0.5 - 7.0/8.0/2, 0.5 - 3.0/8.0/2, 0.5, 0.5 + 7.0/8.0/2, 0.5, 0.5, -2);
+        //moveFace(double goalMouth, double goalSmile, double goalEyebrows, double goalEyelids, double goalEyeYaw, double goalHeadPitch, double goalHeadYaw){
+
         } else {
             moveFace(time, 0.5 + 7.0/8.0/2, 0.5 + 2.0/8.0/2, 0.5, 0.5 + 4.0/8.0/2, 0.5, 0.5, -2);
         }
@@ -180,14 +182,14 @@ public class Zeno {
     
     public void showVerySlightSmile(int time) {
         if (isReal) {
-            
+            moveFace(time, 0.5 - 7.0/8.0/2, 0.5 + 0.0/8.0/2, 0.5, 0.5 + 7.0/8.0/2, 0.5, 0.5, -2);
         } else {
             moveFace(time, 0.5 + 7.0/8.0/2, 0.5 + 4.0/8.0/2, 0.5, 0.5 + 4.0/8.0/2, 0.5, 0.5, -2);
         }
     }
     public void showSmileSlight(int time) {
         if (isReal) {
-            
+             moveFace(time, 0.5 - 7.0/8.0/2, 0.5 + 4.0/8.0/2, 0.5, 0.5 + 4.0/8.0/2, 0.5, 0.5, -2);
         } else {
             moveFace(time, 0.5 + 7.0/8.0/2, 0.5 + 6.0/8.0/2, 0.5, 0.5 + 2.0/8.0/2, 0.5, 0.5, -2);
         }
@@ -196,7 +198,7 @@ public class Zeno {
     
     public void showSmileAlmostFull(int time) {
         if (isReal) {
-            
+             moveFace(time, 0.5 - 4.0/8.0/2, 0.5 + 5.0/8.0/2, 0.5, 0.5 + 2.0/8.0/2, 0.5, 0.5, -2);
         } else {
             moveFace(time, 0.5 + 4.0/8.0/2, 0.5 + 6.5/8.0/2, 0.5, 0.5 + 2.0/8.0/2, 0.5, 0.5, -2);
         }
@@ -204,7 +206,7 @@ public class Zeno {
     
     public void showSmileFull(int time) {
         if (isReal) {
-            
+            moveFace(time, 0.5 - 0/8.0/2, 0.5 + 8.0/8.0/2, 0.5, 0.5 + 2.0/8.0/2, 0.5, 0.5, -2);        
         } else {
             moveFace(time, 0.5 + 3.0/8.0/2, 0.5 + 8.0/8.0/2, 0.5, 0.5 + 1.0/8.0/2, 0.5, 0.5, -2);
         }
