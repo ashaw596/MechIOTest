@@ -32,8 +32,8 @@ public class Zeno {
     public Zeno (String robotIP, boolean isReal) {
         System.out.println("Constructor("+robotIP+")");
         UserSettings.setRobotAddress(robotIP);
-
-        UserSettings.setRobotId("myRobot");
+        if (isReal)
+            UserSettings.setRobotId("myRobot");
         this.isReal = isReal;
     }
     public boolean connectRobot() {
