@@ -18,13 +18,14 @@ public class Test {
         System.out.println("TEST");
     }
     public static void test1() {
-    /*
+    
         
         System.out.println("test1");
-        String robotIP = "127.0.0.1";
+        String robotIP = "143.215.107.169";
         
         UserSettings.setRobotAddress(robotIP);
         
+        UserSettings.setRobotId("myRobot");
         RemoteRobot robot = MechIO.connectRobot();
         
         JointId waist = new JointId(robot.getRobotId(), new Joint.Id(R50RobotJoints.WAIST));
@@ -46,10 +47,10 @@ public class Test {
             robot.move(goalPositions2, 1000);
             MechIO.sleep(1000);
         }
-       */
+       
         
     }
     public static void main(String args[]) {
-        //test1();
+        test1();
     }
 }

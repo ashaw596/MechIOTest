@@ -21,7 +21,7 @@ public class TestInterface extends javax.swing.JFrame {
     public TestInterface() {
         
         
-        robot = new Zeno("127.0.0.1");
+        robot = new Zeno("127.0.0.1", false);
         robot.connectRobot();
         initComponents();
         ActionListener neutralListener = new ActionListener() {
