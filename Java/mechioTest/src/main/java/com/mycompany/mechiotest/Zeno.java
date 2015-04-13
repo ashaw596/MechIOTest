@@ -174,7 +174,7 @@ public class Zeno {
     
     public void showNeutral(int time) {
         if (isReal) {
-            moveFace(time, 0.5 - 7.0/8.0/2, 0.5 - 3.0/8.0/2, 0.5, 0.5 + 7.0/8.0/2, 0.5, 0.5, -2);
+            moveFace(time, 0.5 - 7.0/8.0/2, 0.5 - 2.0/8.0/2, 0.5, 0.5 + 7.0/8.0/2, 0.5, 0.5, -2);
         //moveFace(double goalMouth, double goalSmile, double goalEyebrows, double goalEyelids, double goalEyeYaw, double goalHeadPitch, double goalHeadYaw){
 
         } else {
