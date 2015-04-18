@@ -182,7 +182,7 @@ public class Zeno {
         }
     }
     
-    public void showVerySlightSmile(int time) {
+    public void showSmileVerySlight(int time) {
         if (isReal) {
             moveFace(time, 0.5 - 7.0/8.0/2, 0.5 + 0.0/8.0/2, 0.5, 0.5 + 7.0/8.0/2, 0.5, 0.5, -2);
         } else {
@@ -215,6 +215,47 @@ public class Zeno {
         
     }
     
+    
+    public void showSadVerySlight(int time) {
+        if (isReal) {
+            moveFace(time, 0.5 - 7.0/8.0/2, 0.5 - 2.0/8.0/2, 0.5 + 4.0/8.0/2, 0.5 + 7.0/8.0/2, 0.5, 0.5, -2);
+        } else {
+            moveFace(time, 0.5 + 7.0/8.0/2, 0.5 - 2.0/8.0/2, 0.5 + 4.0/8.0/2, 0.5 + 7.0/8.0/2, 0.5, 0.5, -2);
+        }
+        
+        //moveFace(int time, double goalMouth, double goalSmile, double goalEyebrows, double goalEyelids, double goalEyeYaw, double goalHeadPitch, double goalHeadYaw)
+    }
+    
+    public void showSadSlight(int time) {
+        if (isReal) {
+            moveFace(time, 0.5 - 7.0/8.0/2, 0.5 - 2.0/8.0/2, 0.5 + 4.0/8.0/2, 0.5 + 0.0/8.0/2, 0.5, 0.5, -2);
+        } else {
+            moveFace(time, 0.5 + 7.0/8.0/2, 0.5 - 2.0/8.0/2, 0.5 + 4.0/8.0/2, 0.5 + 0.0/8.0/2, 0.5, 0.5, -2);
+        }
+        
+        //moveFace(int time, double goalMouth, double goalSmile, double goalEyebrows, double goalEyelids, double goalEyeYaw, double goalHeadPitch, double goalHeadYaw)
+    }
+    
+    public void showSadAlmostFull(int time) {
+        if (isReal) {
+            moveFace(time, 0.5 - 7.0/8.0/2, 0.5 - 4.0/8.0/2, 0.5 + 4.0/8.0/2, 0.5 + 0.0/8.0/2, 0.5, 0.5, -2);
+        } else {
+            moveFace(time, 0.5 + 7.0/8.0/2, 0.5 - 4.0/8.0/2, 0.5 + 4.0/8.0/2, 0.5 + 0.0/8.0/2, 0.5, 0.5, -2);
+        }
+        
+        //moveFace(int time, double goalMouth, double goalSmile, double goalEyebrows, double goalEyelids, double goalEyeYaw, double goalHeadPitch, double goalHeadYaw)
+    }
+    
+    public void showSadFull(int time) {
+        if (isReal) {
+            moveFace(time, 0.5 - 6.0/8.0/2, 0.5 - 7.0/8.0/2, 0.5 + 4.0/8.0/2, 0.5 + -1.0/8.0/2, 0.5, 0.5, -2);
+        } else {
+            moveFace(time, 0.5 + 6.0/8.0/2, 0.5 - 7.0/8.0/2, 0.5 + 4.0/8.0/2, 0.5 + -1.0/8.0/2, 0.5, 0.5, -2);
+        }
+        
+        //moveFace(int time, double goalMouth, double goalSmile, double goalEyebrows, double goalEyelids, double goalEyeYaw, double goalHeadPitch, double goalHeadYaw)
+    }
+    
     public boolean showEmotion(String emotion, int time) {
         switch (emotion) {
             case "Neutral":
@@ -222,7 +263,7 @@ public class Zeno {
                 break;
             
             case "SmileVerySlight":
-                showVerySlightSmile(time);
+                showSmileVerySlight(time);
                 break;
             
             case "SmileSlight":
@@ -235,6 +276,22 @@ public class Zeno {
                
             case "SmileFull":
                 showSmileFull(time);
+                break;
+                
+            case "SadVerySlight":
+                showSadVerySlight(time);
+                break;
+            
+            case "SadSlight":
+                showSadSlight(time);
+                break;
+            
+            case "SadAlmostFull":
+                showSadAlmostFull(time);
+                break;
+               
+            case "SadFull":
+                showSadFull(time);
                 break;
             default:
                 return false;
